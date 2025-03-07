@@ -97,7 +97,42 @@ let myArry= [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
     { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
     { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
 
-    const chagedArry=dataArry.map(({id,name, occupation,age}) =>({id, name,job:occupation
-   age:String(Number(age)+1) }))
+    const chagedArry=dataArry.map(({id,name, occupation,age}) =>({id, name,job:occupation,
+   age:(Number(age.toString())+1) }))
 
     console.log(chagedArry)
+
+    //Use the reduce method to calculate the sum of the ages.(https://developer.mozilla.org/en-US/docs/Web/
+    // JavaScript/Reference/Global_Objects/Array/reduce)
+    
+    const ageArray=[{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+      { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+      { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+      { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+      { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
+      
+      //use reduce method to calculate
+      const sumAges=ageArray.reduce((accumalator, currentValue) =>{return accumalator+Number(currentValue.age},0)
+//Calculate average
+      const average=sumAges/ageArray.length;
+
+      //Thinking critically; Take an object and increment its age field
+//create an arry with object age
+      const ageIncrArray=[{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+        { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+        { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+        { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+        { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
+// create function to increment age
+        function incremtAge(person){
+         return {
+...person, // spread property copy age from the object
+age:(+person.age +1).toString(), // change and replace the age 
+// update the date to current date
+"updated_at":new Date()
+
+          };
+        }
+        //use .map to appy the increment 
+        const incremAge=ageIncrArray.map(incremtAge)
+        console.log(incremAge)
